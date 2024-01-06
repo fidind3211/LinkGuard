@@ -7,7 +7,7 @@ export default {
         .setName('check')
         .setDescription('Check a user against the link leaker DB.')
         .addUserOption(option => option.setName('user').setDescription('The user!').setRequired(true))
-        .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
+        .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
 
     async run(interaction, client) {
         let leakers = await getLeakers();

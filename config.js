@@ -22,6 +22,6 @@ export default {
         '1077313539489931386' // spark
     ],
     db: {
-        useLeakDB: true
+        sheetLink: 'https://docs.google.com/spreadsheets/d/1iAgjvxudyqXgH4JciTZEyJoJYDKiKCpwHGRL_6Ixon0/edit#gid=0'
     }
 };

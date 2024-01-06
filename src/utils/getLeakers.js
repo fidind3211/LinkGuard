@@ -1,20 +1,17 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import fs from 'fs';
 import config from '../../config.js';
 
 export default async () => {
-    if (config.db.useLeakDB) JSON.parse(fs.readFileSync('./db/leakers.json', 'utf-8'));
-
     let users = {};
 
     try {
-        const response = await axios.get('https://docs.google.com/spreadsheets/d/1t3Prko-nEoxpBnNotYUS3fsYeZli-ASr9mXwXYRj96U/edit#gid=0');
+        const response = await axios.get(config.db.sheetLink);
         const $ = cheerio.load(response.data);
         
         $('table tbody tr:gt(0)').each((index, row) => {
             const columns = $(row).find('td');
-            if (index === 0 || columns.eq(0).text().includes('Quotes') || columns.eq(0).text().trim() === '') return;
+            if (index < 2 || columns.eq(0).text().includes('Quotes') || columns.eq(0).text().trim() === '') return;
             
             users[columns.eq(0).text().trim().match(/<@(.*?)>/)[1]] = {
                 mention: columns.eq(0).text().trim(),
@@ -25,8 +22,6 @@ export default async () => {
             };
         });
         
-        fs.writeFileSync('./db/leakers.json', JSON.stringify(users, null, 4));
-
         return users;
     } catch (error) {
         console.error('Error', error);
