@@ -1,9 +1,10 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import fs from 'fs';
+import config from '../../config.js';
 
 export default async () => {
-    return JSON.parse(fs.readFileSync('./db/leakers.json', 'utf-8'));
+    if (config.db.useLeakDB) JSON.parse(fs.readFileSync('./db/leakers.json', 'utf-8'));
 
     let users = {};
 

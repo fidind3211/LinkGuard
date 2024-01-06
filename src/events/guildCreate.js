@@ -19,7 +19,7 @@ export default async function (client, guild) {
             embeds: [
                 new EmbedBuilder()
                     .setTitle('Thank you for choosing LinkGuard!')
-                    .setDescription(`${emojis.check} \`LinkGuard\` has been added to \`${guild.name}\`!\n\nYou can set up the bot by running **/config**.\nFor more information, join our [Support Server](https://discord.gg/${config.supportGuild.invite})!`)
+                    .setDescription(`${emojis.check} \`LinkGuard\` has been added to \`${guild.name}\`!\n\n${emojis.info} You can set up the bot by running **/config**.\n${emojis.info} For more information, join our [Support Server](https://discord.gg/${config.supportGuild.invite})!`)
             ],
             components: [
                 new ActionRowBuilder().addComponents(supportButton)
@@ -31,7 +31,7 @@ export default async function (client, guild) {
             embeds: [
                 new EmbedBuilder()
                     .setTitle(`${emojis.warn} LinkGuard Join Error`)
-                    .setDescription(`\`LinkGuard\` did not have needed permissions on join, so I've left your server.\nPlease re-add it with the recommended permissions.`)
+                    .setDescription(`${emojis.info} \`LinkGuard\` did not have needed permissions on join. Please re-add it with the recommended permissions.`)
             ],
             components: [
                 new ActionRowBuilder().addComponents(supportButton)

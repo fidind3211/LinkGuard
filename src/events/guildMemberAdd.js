@@ -11,7 +11,7 @@ export default async function (client, member) {
             embeds: [
                 new EmbedBuilder()
                     .setTitle(`Banned by LinkGuard :D`)
-                    .setDescription(`${emojis.x} You have been banned by **LinkGuard**, as you are on the leaker list.\nTo appeal this, run \`/list appeal\``)
+                    .setDescription(`${emojis.x} You have been banned by **LinkGuard**, as you are on the leaker list.\n${emojis.info} To appeal this, run \`/list appeal\``)
             ]
         }).catch((err) => { });
 
@@ -28,7 +28,7 @@ export default async function (client, member) {
                 embeds: [
                     new EmbedBuilder()
                         .setTitle(`${emojis.x} Insufficient Permissions`)
-                        .setDescription(`I failed to ban <@${member.id}> due to insufficient permissions.\nPlease give me ban permissions.`)
+                        .setDescription(`${emojis.info} I failed to ban <@${member.id}>.\nPlease give me ban permissions.`)
                 ],
                 components: [
                     new ActionRowBuilder().addComponents(supportButton)

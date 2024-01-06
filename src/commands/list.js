@@ -70,7 +70,7 @@ export default {
             if (!leakers[interaction.user.id]) return interaction.reply({
                 embeds: [
                     new EmbedBuilder()
-                        .setDescription(`${emojis.warn} You are not on the list!`)
+                        .setDescription(`${emojis.info} You are not on the list.`)
                 ],
                 ephemeral: true
             });

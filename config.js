@@ -20,5 +20,8 @@ export default {
     admins: [
         '1003477997728313405', // deaf
         '1077313539489931386' // spark
-    ]
+    ],
+    db: {
+        useLeakDB: true
+    }
 };
