@@ -21,7 +21,8 @@ export default {
         '1003477997728313405', // deaf
         '1077313539489931386' // spark
     ],
-    db: {
-        sheetLink: 'https://docs.google.com/spreadsheets/d/1iAgjvxudyqXgH4JciTZEyJoJYDKiKCpwHGRL_6Ixon0/edit#gid=0'
+    repository: {
+        name: 'fidind3211/LinkGuard',
+        tree: 'master'
     }
 };

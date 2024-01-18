@@ -1,25 +1,19 @@
 import axios from 'axios';
-import * as cheerio from 'cheerio';
 import config from '../../config.js';
 
 export default async () => {
     let users = {};
 
     try {
-        const response = await axios.get(config.db.sheetLink);
-        const $ = cheerio.load(response.data);
-        
-        $('table tbody tr:gt(0)').each((index, row) => {
-            const columns = $(row).find('td');
-            if (index < 2 || columns.eq(0).text().includes('Quotes') || columns.eq(0).text().trim() === '') return;
-            
-            users[columns.eq(0).text().trim().match(/<@(.*?)>/)[1]] = {
-                mention: columns.eq(0).text().trim(),
-                username: columns.eq(1).text().trim(),
-                reason: columns.eq(2).text().trim(),
-                added: columns.eq(3).text().trim(),
-                proof: columns.eq(4).text().trim(),
-            };
+        const response = await axios.get(`https://raw.githack.com/${config.repository.name}/${config.repository.tree}/Leakers.md`);
+
+        response.data.split('\n').filter(e => e.startsWith('<@!')).forEach(line => {
+            users[line.split(' | ')[0]] = {
+                mention: line.split(' | ')[0],
+                username: line.split(' | ')[1],
+                reason: line.split(' | ')[2],
+                proof: line.split(' | ')[3],
+            }
         });
         
         return users;
